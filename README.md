@@ -22,16 +22,25 @@ derr($echo = true) - debug error - displays last PHP error.
 dStart($str = 'prof', $line = 1) - debug start - start perfomance monitor.
 
 dPrint($log = 1) - debug print - ends monitoring and displays results - time of executing code.
+
 Example:
 
 dStart('start');
+
 //some code
+
 dStart('point1');
+
 //some code
+
 dStart('point1');
+
 //some code
+
 dStart('point1');
+
 //some code
+
 dPrint();
 
 LA() - Load Average - gets server load average for 1 minute, 5 minutes and 15 minutes.
