@@ -33,11 +33,11 @@ dStart('point1');
 
 //some code
 
-dStart('point1');
+dStart('point2');
 
 //some code
 
-dStart('point1');
+dStart('point3');
 
 //some code
 
