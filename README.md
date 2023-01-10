@@ -9,8 +9,7 @@ darr ($var, $name = 'var') - debug array - displays array or object structure so
 
 err_tr($line = 0) - error trace - trace for debuging.
 
-pr($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test', $s6 = 'test', $s7 = 'test', $s8 = 'test', $s9 = 'test', $s10 = 'test') - print 
-- dispalys up to 10 debug variables, strings, arrays or objects.
+pr($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test', $s6 = 'test', $s7 = 'test', $s8 = 'test', $s9 = 'test', $s10 = 'test') - print - dispalys up to 10 debug variables, strings, arrays or objects.
 
 dpr($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test', $s6 = 'test', $s7 = 'test', $s8 = 'test', $s9 = 'test', $s10 = 'test') - date print - dispalys up to 10 dates from unix timestamps.
 
