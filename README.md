@@ -5,7 +5,7 @@ dtr($echo = true) - debug trace displays call stack.
 
 dvar($var, $line, $echo = 1) - debug variable - displays arrays, strings & objects.
 
-darr($var, $name = 'var') - debug array - displays array or object structure so easy as piece of cake. For arrays with up to 5 leveles.
+darr($var, $name = 'var') - debug array - displays array or object structure so easy as piece of cake. For arrays with up to 5 levels.
 
 err_tr($line = 0) - error trace - trace for debuging.
 
