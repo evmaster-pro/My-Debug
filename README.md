@@ -35,3 +35,4 @@ dStart('point1');
 dPrint();
 
 
+LA() - Load Average - gets server load average for 1 minute, 5 minutes and 15 minutes.
