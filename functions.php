@@ -76,9 +76,7 @@ function err_tr($line = 0)//Trace for debuging
         if ($trace[$n]['file'])
         {
             $trace[$n]['file'] = str_replace($_SERVER['DOCUMENT_ROOT'], '', $trace[$n]['file']);
-            $trace[$n]['function'] = str_replace('include', 'incl', $trace[$n]['function']);
 
-            $result .= str_replace('.php', '', basename($trace[$n]['file']));
             $result .= '[' . $trace[$n]['line'] . '][' . $trace[$n]['function'] . '] => ';
         }
     }
@@ -104,8 +102,9 @@ function pr($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test'
 function dpr($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test', $s6 = 'test', $s7 = 'test', $s8 = 'test', $s9 = 'test', $s10 = 'test')
 {
     for ($n = 1; $n <= 10; $n++)
-        if (${'s' . $n} != 'test')
-            echo err_tr(1) . date('d-m-Y H:i:s', ${'s' . $n}) . "<br>";
+    {
+        if (${'s' . $n} != 'test') echo err_tr(1) . date('d-m-Y H:i:s', ${'s' . $n}) . "<br>";
+    }
 }
 
 //Debug error log writer
@@ -132,6 +131,7 @@ function cl($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test'
         {
             if (is_array(${'s' . $n}) || is_object(${'s' . $n})) $txt = dvar(${'s' . $n}, 2, 0);
             else $txt = err_tr(1) . '[' . $n . '] ' . ${'s' . $n} . "\n";
+            
             $txt = str_replace("\n", "", $txt);
 
             echo '<script>console.log("'.date('H:i:s').': '.json_encode($txt).'");</script>';
@@ -143,8 +143,8 @@ function cl($s1 = 'test', $s2 = 'test', $s3 = 'test', $s4 = 'test', $s5 = 'test'
 //Last PHP error printer
 function derr($echo = true)
 {
-  $errors = error_get_last();
-  $text = err_tr(1)."<font color=red>PHP error: ".$errors['type']."<br>".$errors['message']."</font><br>";
+  $err = error_get_last();
+  $text = err_tr(1)."<font color=red>PHP error: ".$err['type']."<br>".$err['message']."</font><br>";
 
   if($echo) echo $text;
   else return $text;
