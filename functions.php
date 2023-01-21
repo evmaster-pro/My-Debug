@@ -76,7 +76,8 @@ function err_tr($line = 0)//Trace for debuging
         if ($trace[$n]['file'])
         {
             $trace[$n]['file'] = str_replace($_SERVER['DOCUMENT_ROOT'], '', $trace[$n]['file']);
-
+            
+            $result .= basename($trace[$n]['file']);
             $result .= '[' . $trace[$n]['line'] . '][' . $trace[$n]['function'] . '] => ';
         }
     }
