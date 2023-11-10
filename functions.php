@@ -30,39 +30,33 @@ function dvar($var, $line, $echo = 1)//Shows arrays, strings & objects
     else return $txt;
 }
 
-function darr ($var, $name = 'var')//Displays array or object structure so easy as piece of cake
+function darr($var, $name = '')//Displays array or object structure so easy as piece of cake
 {
-    $out = '<b>'.$name.':</b><br>';
-    
-    foreach($var as $key1=>$val1)
+    $out = '';
+    $len = 250;
+
+    if ($name) 
     {
-        if(is_array($val1) || is_object($val1))
-        {
-            foreach($val1 as $key2=>$val2)
-            {
-                if(is_array($val2) || is_object($val2))
-                {
-                    foreach($val2 as $key3=>$val3)
-                    {
-                        if(is_array($val3) || is_object($val3))
-                        {
-                            foreach($val3 as $key4=>$val4)
-                            {
-                                if(is_array($val4) || is_object($val4))
-                                {
-                                    foreach($val4 as $key5=>$val5)
-                                    {
-                                        $out .= $name.'['.$key1.']['.$key2.']['.$key3.']['.$key4.']['.$key5.'] = '.$val5.'<br>';
-                                    }
-                                } else $out .= $name.'['.$key1.']['.$key2.']['.$key3.']['.$key4.'] = '.$val4.'<br>';
-                            }
-                        } else $out .= $name.'['.$key1.']['.$key2.']['.$key3.'] = '.$val3.'<br>';
-                    }
-                } else $out .= $name.'['.$key1.']['.$key2.'] = '.$val2.'<br>';
-            }
-        } else $out .= $name.'['.$key1.'] = '.$val1.'<br>';
+        $out .= '<b>' . $name . ':</b><br>';
     }
-    
+
+    if (is_array($var) || is_object($var)) 
+    {
+        foreach ($var as $key => $val) 
+        {
+            $keyString = is_numeric($key) ? '[' . $key . ']' : "['" . $key . "']";
+            $displayName = $name . $keyString;
+
+            if (is_array($val) || is_object($val)) 
+            {
+                if (is_array($val) && count($val) > 1) $out .= '<br>';
+                $out .= darr($val, $displayName);
+            } else {
+                $out .= $displayName . ' = ' . trim((mb_strlen($val) > $len ? mb_substr($val, 0, $len) . '...' : $val), " \n") . '<br>';
+            }
+        }
+    }
+
     return $out;
 }
 
@@ -199,5 +193,3 @@ function LA()
 
     return [$la[0], $la[1], $la[2]];
 }
-
-?>
